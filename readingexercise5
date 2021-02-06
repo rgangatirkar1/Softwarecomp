@@ -1,0 +1,55 @@
+
+<html>
+<body>
+<script>
+
+function buildArray(inputString)
+{
+    myList = new Array();
+	myList = inputString.split(",");
+	for (item = 0; item < myList.length; item++)
+	{
+		myList[item] = parseInt(myList[item]);
+	}
+    return myList;
+}
+
+/* What do the functions B, A, doTheThing do? */
+function B(myList, i, resultSoFar) //declares function B with three parameters: mylist, i, and resultSoFar. //
+{
+    if (i == myList.length) //if i is equal to the length of myList then...//
+      return resultSoFar; //returns the value resultSoFar parameter//
+    else return A(myList, i+1, resultSoFar - myList[i]); //returns the value of function A with these parameters: myList, value of i+1, and the value of resultSoFar minus the value of the ith element of myList.//
+}
+
+function A(myList, i, resultSoFar)  //declares function A with three parameters: mylist, i, and resultSoFar. //
+{
+    if (i == myList.length) //if i is equal to the length of myList then...//
+      return resultSoFar; //returns the value resultSoFar parameter//
+    else return B(myList, i+1, resultSoFar + myList[i]); //returns the value of function B with these parameters: myList, value of i+1, and the value of resultSoFar added to the value of the ith element of myList.//
+}
+function doTheThing(myList) //declares function doTheThing with parameter myList.//
+{
+    var count = 0; //variable count is declared set to zero.//
+    return A(myList,0,0); //returns the value of function A with these three parameters : mylist, i=0, and resultSoFar=0//
+    
+}
+//function B, function A, and function doTheThing basically use parameters, and using the value of these parameters, they have conditional statements that either return one of the parameters or make use of the other functions with slightly altered parameter values.//
+function submit()
+{
+	var inputString = document.getElementById("inputBox").value;
+
+	var myList = buildArray(inputString); 
+    
+    var result = doTheThing(myList);
+	
+	document.getElementById("result").innerHTML = result;
+
+}
+</script>
+Input a list of integers separated by commas, e.g. 4, 1, 2, 6, 3, 4<p></p>
+<input id="inputBox"></input><button id="submit" onclick="submit()">submit data</button>
+<div id="result">
+</div>
+</body>
+</html>
