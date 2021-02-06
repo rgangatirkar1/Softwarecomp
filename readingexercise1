@@ -1,0 +1,32 @@
+<html>
+<body>
+<script text="text/javascript">
+
+function submit()
+{
+	var inputStringA = document.getElementById("inputBoxA").value; //names a variable, gets the submitted value in the first input box
+    var inputStringB = document.getElementById("inputBoxB").value; //names a variable, gets the submitted value in the second input box
+    var a = parseInt(inputStringA); //parses the input value and returns an integer for inputStringA
+    var b = parseInt(inputStringB); //parses the input value and returns an integer for inputStringB
+    a = a+b; //a is equal to a+b
+    b = a-b; //b is equal to a-b
+    a = a-b; // a is equal to a-b
+    document.getElementById("inputBoxA").value = a; //changes the value of inputBoxA to the value of the A variable
+    document.getElementById("inputBoxB").value = b; //changes the value of inputBoxA to the value of the A variable
+}
+</script>
+<table>
+    <tr>
+        <th>Input A</th><th>Input B</th></tr>
+    </tr>
+    <tr>
+<td><input id="inputBoxA"></input></td>
+<td><input id="inputBoxB"></input></td>
+</tr>
+</table>
+
+<button id="submit" onclick="submit()">submit data</button>
+<div id="result">
+</div>
+</body>
+</html>
