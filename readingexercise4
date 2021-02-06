@@ -1,0 +1,58 @@
+<html>
+<body>
+<script>
+
+var limitA = 60;
+var limitB = 60;
+
+function makeNice(x)
+{
+    if (x > 9)
+      return x;
+    return "0"+x;
+}
+function bop()
+{
+	var inputString = document.getElementById("C").innerHTML; //gets the value of the assigned html element. In this case the id would be "C".//
+    var val = parseInt(inputString); //parses c and turns it into an integer.//
+    val = val + 1; //increments val//
+	document.getElementById("C").innerHTML = makeNice(val); //Changes the value of the assigned html element. If val is greater than 9, val is the replacement value.//
+
+}
+
+/* What does the function bip() do? */
+function bip() //function declared//
+{
+	var inputString = document.getElementById("B").innerHTML; //gets the value of the assigned html element. In this case the id would be "B".//
+    var val = parseInt(inputString);  //parses B value and turns it into an integer.//
+    val = val + 1; //increments val//
+    if (val >= limitB) //if val is greater than or equal to limitb (which is 60) then....//
+    {
+        val = 0; //val is equal to zero//
+        bop(); //bop function is called (annotated above)//
+    }
+	document.getElementById("B").innerHTML = makeNice(val); //value of "B" element is changed. If val is equal to zero, then it will stay that way and B will become zero. If will is greater than 9 but less than 60, that value is returned, and so B would be changed to that value.//
+
+}
+function boop()
+{
+	var inputString = document.getElementById("A").innerHTML; //gets the value of the assigned html element. In this case the id would be "A".//
+    var val = parseInt(inputString); //parses A and turns it into an integer.//
+    val = val + 1; //increments val//
+    if (val >= limitA) //if val is greater than of equal to limitA (which is equal to 60) then....//
+    {
+        val = 0; //val is equal to zero//
+        bip(); //bip function is called//
+    }
+	document.getElementById("A").innerHTML = makeNice(val); //Changes the value of the assigned html element (A). If val is greater than 60, val is equal to zero. If val is less than 60 but greater than 9, val is returned and made the value of the "A" element.//
+
+}
+
+}
+</script>
+<span id="C">00</span>:<span id="B">00</span>:<span id="A">00</span>
+
+<button id="submit" onclick="boop()">Boop!</button>
+</div>
+</body>
+</html>
