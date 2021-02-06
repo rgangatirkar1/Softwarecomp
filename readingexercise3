@@ -1,0 +1,50 @@
+<html>
+<body>
+<script>
+
+function buildArray(inputString)
+{
+    myList = new Array();
+	myList = inputString.split(",");
+	for (item = 0; item < myList.length; item++)
+	{
+		myList[item] = parseInt(myList[item]);
+	}
+    return myList;
+}
+
+/* What does function doTheThing do? */
+function doTheThing(myList) //declares a function with the parameter my list.//
+{
+    var count = 0; //the count variable is declared and set to zero.//
+    for (i = 0; i < myList.length; i++) //for loop is declared. i is equal to zero and the i will increment until it is greater than the length of the list. This essentially iterates through every element of the list.//
+    {
+        var flag = false; //the flag variable is declared and set equal to the boolean value false.//
+        for (j = i+1; j < myList.length; j++) // variable j is set to the value i+1 and this forloop runs until j is greater than the length of the list, as it cannot iterate anymore. J increments everytime it iterates through an element. 
+        {
+            if (myList[i] == myList[j]) //if statement is declared. If the value of the ith element of my list is equal to the jth element of myList(j is declared above as whatever the i value is plus 1).
+                flag = true; //then flag is true//
+        }
+        if (!flag) //if flag is true//
+            ++count; //count is incremented//
+    }
+    return count; //count value is returned//d
+}
+function submit()
+{
+	var inputString = document.getElementById("inputBox").value;
+
+	var myList = buildArray(inputString); 
+    
+    var result = doTheThing(myList);
+	
+	document.getElementById("result").innerHTML = result;
+
+}
+</script>
+Input a list of integers separated by commas, e.g. 4, 1, 2, 6, 3, 4<p></p>
+<input id="inputBox"></input><button id="submit" onclick="submit()">submit data</button>
+<div id="result">
+</div>
+</body>
+</html>
