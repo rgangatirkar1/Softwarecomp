@@ -1,0 +1,44 @@
+<html>
+<body>
+<script>
+
+function buildArray(inputString)
+{
+    myList = new Array();
+	myList = inputString.split(",");
+	for (item = 0; item < myList.length; item++)
+	{
+		myList[item] = parseInt(myList[item]);
+	}
+    return myList;
+}
+
+/* What does the function doTheThing do? */
+function doTheThing(myList) //declares a function with the parameter myList//
+{
+    var x = 0; //declares variable x, sets it equal to zero//
+    for (i = 0; i < myList.length; i++) //for loop is declared, i is set to zero, iterates through the list until i is more than the length of the list. I is incremented every time.//
+    {
+        x = x + myList[i]; //the x value changes through each iteration of the list. The ith element of the list, plus the x value, is equal to x. So if x=0 and the list was [2,5,6,8] and i=3, x would be equal to 8.//
+    }
+   
+    return x; //returns x value//
+}
+function submit()
+{
+	var inputString = document.getElementById("inputBox").value;
+
+	var myList = buildArray(inputString); 
+    
+    var result = doTheThing(myList);
+	
+	document.getElementById("result").innerHTML = result;
+
+}
+</script>
+Input a list of integers separated by commas, e.g. 4, 1, 2, 6, 3, 4<p></p>
+<input id="inputBox"></input><button id="submit" onclick="submit()">submit data</button>
+<div id="result">
+</div>
+</body>
+</html>
